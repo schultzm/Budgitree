@@ -9,7 +9,7 @@ This tree will likely contain polytomies, and branch lengths that are so
 small that they will be represented in exponential notation.
 Some programs will not accept trees with these two features (e.g., ClusterPicker).
 You could remove the polytomies with the `ape` package in `R`.  But how do you
-print the tree to standard out in standard float format?  You could submit
+print the tree to standard out with the branch lengths in standard float format?  You could submit
 an issue to the developers of your target program and hope they respond with a fix.
 Both of these options may delay your workflow.  This program provides a python3 solution
 to your problems.  Given a phylogenetic tree in newick format, `budgitree`
