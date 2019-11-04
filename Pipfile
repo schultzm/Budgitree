@@ -4,8 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-"e1839a8" = {path = "."}
+e1839a8 = {path = "."}
 pandas = "*"
+twine = "*"
 
 [dev-packages]
 pytest = "*"

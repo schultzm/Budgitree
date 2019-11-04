@@ -64,12 +64,18 @@ optional arguments:
 
 ## Installation
 
+`pip3 install budgitree`
+
 `pip3 install git+https://github.com/schultzm/Budgitree.git`
 
 
 ## Testing
 
 `budgitree test`
+
+## Version
+
+`budgitree version`
 
 
 ![budgitree](https://static3.bigstockphoto.com/1/6/5/large1500/56146028.jpg)
