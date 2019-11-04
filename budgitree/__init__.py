@@ -1,7 +1,7 @@
 """
-Budgitree init.py --- use specify version string
+Budgitree init.py
 """
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __parent_dir__ = 'budgitree'
 __test_tree__ = 'data/example_tree.tree'

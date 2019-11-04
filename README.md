@@ -16,13 +16,14 @@ to your problems.  Given a phylogenetic tree in newick format, `budgitree`
 provides an easy way to print your tree to `stdout` with:
 
 1. Polytomies resolved (i.e., tree converted to strictly bifurcating) and/or
-2. Exponential notation removed (i.e., branch lengths in float format with user-specified number of decimal places
+2. Exponential notation removed (i.e., branch lengths in float format with user-specified number of decimal places)
 3. Collapse branches with support values less than the specified cutoff (default is do nothing)
 
 ## Usage
 
 ### Get help
-```
+
+```{bash}
 $ budgitree
 usage: budgitree [-h]  ...
 
@@ -41,7 +42,7 @@ Sub-commands help:
 
 ### Start smuggling
 
-```
+```{bash}
 $ budgitree smuggle -h
 usage: budgitree smuggle [-h] [-p PRECISION] [-b] [-c COLLAPSE] tree
 
@@ -62,20 +63,73 @@ optional arguments:
                         Collapse nodes with support values less than this.
 ```
 
+#### Collapse branches
+
+Collapse branches with less than 0.5 support:
+
+```{bash}
+budgitree smuggle treefile.tre -c 0.50`
+```
+
+#### Print tree with branch supports to 20 decimal places (remove exponential notation):
+
+```{bash}
+budgitree smuggle treefile.tre -p 20
+```
+
+#### Stop removal of polytomies during run:
+
+If for some reason you would like to retain the polytomies, switch the feature off:
+
+```{bash}
+budgitree smuggle treefile.tre -b
+```
+
+#### Combine the options
+
+Remove polytomies, print branch lengths to 15 decimal places, collapse nodes <0.5:
+
+```{bash}
+budgitree smuggle treefile.tre -p 15 -c 0.5
+```
+
 ## Installation
 
-`pip3 install budgitree`
+Using `pip`:
 
-`pip3 install git+https://github.com/schultzm/Budgitree.git`
+```{bash}
+pip3 install budgitree
+```
+
+The development version:
+
+```{bash}
+pip3 install git+https://github.com/schultzm/Budgitree.git
+```
 
 
 ## Testing
 
-`budgitree test`
+Run the test suite to check the software works as intended:
+
+```{bash}
+budgitree test
+```
 
 ## Version
 
-`budgitree version`
+Print the version to stdout:
 
+```{bash}
+budgitree version
+```
 
-![budgitree](https://static3.bigstockphoto.com/1/6/5/large1500/56146028.jpg)
+## Etymology
+
+The budgerigar, or "budgie", is an Australian bird (_Melopsittacus undulatus_), keeping 
+with an Australian theme after @tseemann.  The software sets digits on branches – if you
+are imaginative, that kind of sounds like `budgit`.  `tree` is because it operates on
+phylogenetic trees.  The `smuggle` feature of `budgitree` has to do with an Australian
+joke involving budgies and swimwear.
+
+![budgitree](https://www.hbw.com/sites/default/files/styles/ibc_1k/public/ibc/p/budgerigar_2015_bh_5d_miaboolya_with_les.jpg?itok=l2lThq-t)
