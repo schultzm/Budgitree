@@ -35,7 +35,7 @@ def main():
     subparser_modules = parser.add_subparsers(
         title="Sub-commands help", help="", metavar="", dest="subparser_name")
     subparser_modules.add_parser(
-        "smuggle", help="Smuggle the budgies.", description="Process the tree.",
+        "smuggle", help="Smuggle the budgie.", description="Process the tree.",
         parents=[subparser_args1])
 
     subparser_modules.add_parser(
