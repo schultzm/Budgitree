@@ -1,6 +1,6 @@
 # Budgitree
 
-[![CircleCI](https://circleci.com/gh/schultzm/Budgitree/tree/master.svg?style=svg)](https://circleci.com/gh/schultzm/Budgitree/tree/master)
+[![CircleCI](https://circleci.com/gh/schultzm/Budgitree/tree/master.svg?style=svg&circle-token=23da01746bede233a29934b06e63a5cf841e27b2)](https://circleci.com/gh/schultzm/Budgitree/tree/master)
 
 ## Why use this program?
 
