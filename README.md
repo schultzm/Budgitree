@@ -35,7 +35,7 @@ optional arguments:
 
 Sub-commands help:
   
-    smuggle   Smuggle the budgies.
+    smuggle   Smuggle the budgie.
     version   Print version.
     test      Run test suite.
 ```
@@ -130,6 +130,6 @@ The budgerigar, or "budgie", is an Australian bird (_Melopsittacus undulatus_), 
 with an Australian theme after @tseemann.  The software sets digits on branches – if you
 are imaginative, that kind of sounds like `budgit`.  `tree` is because it operates on
 phylogenetic trees.  The `smuggle` feature of `budgitree` has to do with an Australian
-joke involving budgies and swimwear.
+joke involving budgie and swimwear.
 
 ![budgitree](https://www.hbw.com/sites/default/files/styles/ibc_1k/public/ibc/p/budgerigar_2015_bh_5d_miaboolya_with_les.jpg?itok=l2lThq-t)
