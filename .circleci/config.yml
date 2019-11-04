@@ -9,4 +9,5 @@ jobs: # A basic unit of work in a run
     steps: # steps that comprise the `build` job
       - checkout # check out source code to working directory
       - run: pip3 install git+https://github.com/schultzm/Budgitree.git --user
+      - run: PATH=/home/circleci/.local/bin:$PATH
       - run: budgitree test
