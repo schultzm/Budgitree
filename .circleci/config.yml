@@ -11,4 +11,4 @@ jobs: # A basic unit of work in a run
       - run: pip3 install git+https://github.com/schultzm/Budgitree.git --user
       - run: export PATH=$PATH:/home/circleci/.local/bin
       - run: echo $PATH
-      - run: budgitree test
+      - run: python3 /home/circleci/.local/bin/budgitree test
