@@ -41,7 +41,7 @@ def main():
     from pathlib import Path
     if not Path(args.tree).exists():
         import sys
-        sys.exit(f'File \'{Path(args.tree)}\' not found.  Exiting.')
+        sys.exit(f'File \'{Path(args.tree).absolute()}\' not found.  Exiting.')
     from ete3 import Tree
     t = Tree(args.tree)
     if not args.dont_bifurcate_polytomies:
