@@ -16,13 +16,14 @@ def main():
             formatter_class=argparse.ArgumentDefaultsHelpFormatter,
             description="""
             Given a newick tree, use this program to resolve polytomies (convert to
-            bifurcating) and or change the formatting of branch lengths.""")
+            bifurcating), and/or change the precision of branch lengths,
+            and/or collapse.""")
     subparser_args1 = argparse.ArgumentParser(add_help=False)
     subparser_args1.add_argument("tree", help="Input newick tree")
     subparser_args1.add_argument("-p", "--precision", help = """Branch length precision
                                                        (i.e., number of decimal places to
                                                        print).""",
-                        default = 6,
+                        default = None,
                         type = int)
     subparser_args1.add_argument("-b", "--dont_bifurcate_polytomies",
                         help = "Switch off conversion of node polytomies to bifurcating",
@@ -63,22 +64,28 @@ def main():
             import sys
             sys.exit(f"File '{Path(args.tree).absolute()}' not found.  Exiting.")
 
-        from ete3 import Tree
-        t = Tree(args.tree)
-        if not args.dont_bifurcate_polytomies:
-            t.resolve_polytomy(recursive=True)
-
         from Bio import Phylo
         from Bio.Phylo.NewickIO import Writer
         from io import StringIO
-        tree = Phylo.read(StringIO(t.write(format = 0)), "newick")
+        tree = Phylo.read(args.tree, 'newick')
         tree.collapse_all(lambda c: c.confidence is not None and
                           c.confidence < args.collapse)
-        trees = Writer([tree]).to_strings(format_branch_length=f"%1.{args.precision}f")
+        if not args.dont_bifurcate_polytomies:
+            from ete3 import Tree
+            t = Tree(tree.format('newick'))
 
-        for tre in trees:
-            print(tre)
+            t.resolve_polytomy(recursive=True)
+            tree = Phylo.read(StringIO(t.write(format = 0)), "newick")
 
+        trees = None
+        if args.precision is not None:
+            trees = Writer([tree]). \
+            to_strings(format_branch_length = f"%1.{args.precision}f")
+        else:
+            trees = Writer([tree]). \
+            to_strings(format_branch_length = f'%g')
+        for tree in trees:
+            print(tree)
 
 if __name__ == "__main__":
     main()
