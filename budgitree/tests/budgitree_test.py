@@ -10,17 +10,22 @@ from ete3 import Tree
 
 
 class TreeTestCasePass(unittest.TestCase):
+    maxDiff = None
     def setUp(self):
+        print("Using ete3.Tree(example.tree)")
         self.tree = Tree(pkg_resources.resource_filename(__parent_dir__, __test_tree__))
 
     def ete_print_tree(self):
-        self.assertEqual(self.tree.write(), '(XXYY-143_1:0.067295,((XXYY-39_1:0.04314,(XXYY-278_1:0.029035,XXYY-307_1:0.038563,XXYY-4_1:0.039559)0.14:0.001279)0.76:0.001489,((XXYY-64_1:0.017393,(XXYY-144_1:0.036755,XXYY-88_1:0.032626)0.99:0.003955)0.71:0.001156,XXYY-45_1:0.027032)0.87:0.002729)0.98:0.00694);')
+        print("Check that the tree can be printed, to verify approximately functional ete3")
+        self.assertEqual(self.tree.write(), '(XXYY-143_1:0.067294999999999993712,((XXYY-39_1:0.043139999999999997793,(XXYY-278_1:0.02903499999999999831,XXYY-307_1:0.038563000000000000056,XXYY-4_1:0.039558999999999996944)0.14000000000000001332:0.001278999999999999972)0.76000000000000000888:0.0014890000000000000891,((XXYY-64_1:0.017392999999999998739,(XXYY-144_1:0.036755000000000002947,XXYY-88_1:0.032626000000000002221)0.98999999999999999112:0.0039550000000000001821)0.70999999999999996447:0.0011559999999999999096,XXYY-45_1:0.027032000000000000473)0.86999999999999999556:0.0027290000000000000889)0.97999999999999998224:0.0069399999999999999883);')
 
     def ete_collapse_polytomies(self):
         self.tree.resolve_polytomy(recursive=True)
-        self.assertEqual(self.tree.write(), '(XXYY-143_1:0.067295,((XXYY-39_1:0.04314,((XXYY-307_1:0.038563,XXYY-4_1:0.039559)0:0,XXYY-278_1:0.029035)0.14:0.001279)0.76:0.001489,((XXYY-64_1:0.017393,(XXYY-144_1:0.036755,XXYY-88_1:0.032626)0.99:0.003955)0.71:0.001156,XXYY-45_1:0.027032)0.87:0.002729)0.98:0.00694);')
+        print("Print tree after resolving polytomies with ete3")
+        self.assertEqual(self.tree.write(), '(XXYY-143_1:0.067294999999999993712,((XXYY-39_1:0.043139999999999997793,((XXYY-307_1:0.038563000000000000056,XXYY-4_1:0.039558999999999996944)0:0,XXYY-278_1:0.02903499999999999831)0.14000000000000001332:0.001278999999999999972)0.76000000000000000888:0.0014890000000000000891,((XXYY-64_1:0.017392999999999998739,(XXYY-144_1:0.036755000000000002947,XXYY-88_1:0.032626000000000002221)0.98999999999999999112:0.0039550000000000001821)0.70999999999999996447:0.0011559999999999999096,XXYY-45_1:0.027032000000000000473)0.86999999999999999556:0.0027290000000000000889)0.97999999999999998224:0.0069399999999999999883);')
 
     def biophylo_collapse_branches(self):
+        print("Check nodes with low support (<0.98) were collapsed using BioPhylo as intended.")
         from Bio import Phylo
         from io import StringIO
         tree = Phylo.read(StringIO(self.tree.write(format = 0)), "newick")
@@ -29,6 +34,7 @@ class TreeTestCasePass(unittest.TestCase):
         self.assertEqual(tree.format('newick'), '(XXYY-143_1:0.06729,(XXYY-39_1:0.04463,XXYY-45_1:0.02976,XXYY-278_1:0.03180,XXYY-307_1:0.04133,XXYY-4_1:0.04233,XXYY-64_1:0.02128,(XXYY-144_1:0.03676,XXYY-88_1:0.03263)0.99:0.00784)0.98:0.00694):0.00000;\n')
 
     def biophylo_print_formatted_bls(self):
+        print("Check that branch lengths can be reformatted using BioPhylo (10 decimal places).")
         from Bio.Phylo.NewickIO import Writer
         from Bio import Phylo
         from io import StringIO
