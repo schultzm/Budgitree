@@ -25,6 +25,10 @@ def main():
                                                        print).""",
                         default = None,
                         type = int)
+    subparser_args1.add_argument("-m", "--support_multiplier", help = """Multiply branch supports
+                        by this value.  Use, for example, to convert scale of 0 to 1 to percentages.  """,
+                        default = None,
+                        type = int)
     subparser_args1.add_argument("-b", "--dont_bifurcate_polytomies",
                         help = "Switch off conversion of node polytomies to bifurcating",
                         default = False,

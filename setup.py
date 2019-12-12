@@ -40,7 +40,8 @@ setup(
     packages=find_packages(exclude=["contrib", "docs", "tests"]),  # Required
     python_requires=">=3.7",
     install_requires=["ete3 >= 3.1.1",
-                      "biopython >= 1.74"],
+                      "biopython >= 1.74",
+                      "six >= 1.13.0"],
     extras_require={  # Optional
         "dev": ["pre-commit", "pipenv"],
         "test": ["pytest", "pytest-cov"],
