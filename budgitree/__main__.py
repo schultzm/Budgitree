@@ -42,7 +42,8 @@ def main():
         title="Sub-commands help", help="", metavar="", dest="subparser_name")
     subparser_modules.add_parser(
         "smuggle", help="Smuggle the budgie.", description="Process the tree.",
-        parents=[subparser_args1])
+        parents=[subparser_args1],
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     subparser_modules.add_parser(
         "version", help="Print version.", description="Print version.")
@@ -87,7 +88,7 @@ def main():
             t.standardize()
             tree = Phylo.read(StringIO(t.write(format = 0)), "newick")
         if args.support_multiplier is not None:
-            print(f"Multiplying branch supports by {args.support_multiplier}")
+            print(f"Multiplying branch supports by {args.support_multiplier}", file = sys.stderr)
             for non_terminal in tree.get_nonterminals():
                 if non_terminal.confidence is not None:
                     if args.support_multiplier == 100:
@@ -95,7 +96,6 @@ def main():
                     else:
                         if args.support_multiplier == 0.1:
                             non_terminal.confidence = float("{0:.2f}".format(float(non_terminal.confidence * args.support_multiplier)))
-            print(tree)
  
         # Polytomies created by collapsing nodes still need to be parseable.
         # Achieve this by increasing the recursion limit
