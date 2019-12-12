@@ -28,7 +28,8 @@ def main():
     subparser_args1.add_argument("-m", "--support_multiplier", help = """Multiply branch supports
                         by this value.  Use, for example, to convert scale of 0 to 1 to percentages.  """,
                         default = None,
-                        type = int)
+                        choices = [0.1, 100],
+                        type = float)
     subparser_args1.add_argument("-b", "--dont_bifurcate_polytomies",
                         help = "Switch off conversion of node polytomies to bifurcating",
                         default = False,
@@ -85,20 +86,35 @@ def main():
             t = Tree(tree.format("newick"))
             t.standardize()
             tree = Phylo.read(StringIO(t.write(format = 0)), "newick")
+        if args.support_multiplier is not None:
+            print(f"Multiplying branch supports by {args.support_multiplier}")
+            for non_terminal in tree.get_nonterminals():
+                if non_terminal.confidence is not None:
+                    if args.support_multiplier == 100:
+                        non_terminal.confidence = float("{0:.0f}".format(float(non_terminal.confidence * args.support_multiplier)))
+                    else:
+                        if args.support_multiplier == 0.1:
+                            non_terminal.confidence = float("{0:.2f}".format(float(non_terminal.confidence * args.support_multiplier)))
+            print(tree)
+ 
         # Polytomies created by collapsing nodes still need to be parseable.
         # Achieve this by increasing the recursion limit
         sys.setrecursionlimit(3000)
         # but don"t let it get too high (to prevent stack overflow)
         sys.setrecursionlimit(tree.count_terminals() * 2)
         trees = None
+        if args.support_multiplier == 100:
+            format_confidence='%1.0f'
+        else:
+            format_confidence='%1.2f'
         if args.precision is not None:
             print(f"Reformatting branch lengths to {args.precision} decimal places.",
                   file = sys.stderr)
             trees = Writer([tree]). \
-            to_strings(format_branch_length = f"%1.{args.precision}f")
+            to_strings(format_branch_length = f"%1.{args.precision}f", format_confidence=format_confidence)
         else:
             trees = Writer([tree]). \
-            to_strings(format_branch_length = f"%g")
+            to_strings(format_branch_length = f"%g", format_confidence=format_confidence)
         # there is only one tree in trees, so:
         print(next(trees))
 
