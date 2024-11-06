@@ -30,18 +30,17 @@ setup(
     author="Dr Mark B Schultz",  # Optional
     author_email="dr.mark.schultz@gmail.com",  # Optional
     classifiers=[  # Optional
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 3 - Beta",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.13.0",
     ],
     keywords="budgitree scientific exponential notation branch support decimal polytomy polytomies phylogenetic newick tree bifurcating",  # Optional
     packages=find_packages(exclude=["contrib", "docs", "tests"]),  # Required
-    python_requires=">=3.7",
-    install_requires=["ete3 >= 3.1.1",
-                      "biopython >= 1.74",
-                      "six >= 1.13.0"],
+    python_requires=">=3.13.0",
+    install_requires=["ete3 >= 3.1.3",
+                      "biopython >= 1.84"],
     extras_require={  # Optional
         "dev": ["pre-commit", "pipenv"],
         "test": ["pytest", "pytest-cov"],
