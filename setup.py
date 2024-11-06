@@ -34,7 +34,7 @@ setup(
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.13.0",
+        "Programming Language :: Python :: 3.11.0",
     ],
     keywords="budgitree scientific exponential notation branch support decimal polytomy polytomies phylogenetic newick tree bifurcating",  # Optional
     packages=find_packages(exclude=["contrib", "docs", "tests"]),  # Required
