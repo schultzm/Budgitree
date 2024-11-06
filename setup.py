@@ -41,7 +41,8 @@ setup(
     python_requires=">=3.9",
     install_requires=["ete3 == 3.1.3",
                       "biopython == 1.84",
-                      "six == 1.16.0"],
+                      "six == 1.16.0",
+                      "setuptools == 75.3.0"],
     extras_require={  # Optional
         "dev": ["pre-commit", "pipenv"],
         "test": ["pytest", "pytest-cov"],
