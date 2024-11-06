@@ -15,7 +15,7 @@ You could remove the polytomies with the `ape` package in `R`.  But how do you
 print the tree to standard out with the branch lengths in standard float format?  You could submit
 an issue to the developers of your target program and hope they respond with a fix.
 Both of these options may delay your workflow.  This program provides a python3 solution
-to your problems.  Given a phylogenetic tree in newick format, `budgitree`
+to your problems.  Given a phylogenetic tree in (FastTree) newick format, `budgitree`
 provides an easy way to print your tree to `stdout` with:
 
 1. Polytomies resolved (i.e., tree converted to strictly bifurcating) and/or
@@ -71,7 +71,7 @@ optional arguments:
 Collapse branches with less than 0.5 support:
 
 ```{bash}
-budgitree smuggle treefile.tre -c 0.50`
+budgitree smuggle treefile.tre -c 0.50
 ```
 
 #### Print tree with branch supports to 20 decimal places (remove exponential notation):
