@@ -12,22 +12,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.13"]
+        python-version: ["3.9", "3.10", "3.11"]
+        
     steps:
     - uses: actions/checkout@v2 # check out source code to working directory
+    
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install Budgitree
-      run: pip3 install git+https://github.com/schultzm/Budgitree.git
-    - name: Run Budgitree test
-      run: budgitree test
+        
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install flake8
+        python -m pip install --upgrade pip setuptools
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+    - name: Install Budgitree
+      run: pip3 install git+https://github.com/schultzm/Budgitree.git
+      
+    - name: Run Budgitree test
+      run: budgitree test
+      
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
