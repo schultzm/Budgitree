@@ -39,8 +39,9 @@ setup(
     keywords="budgitree scientific exponential notation branch support decimal polytomy polytomies phylogenetic newick tree bifurcating",  # Optional
     packages=find_packages(exclude=["contrib", "docs", "tests"]),  # Required
     python_requires=">=3.9",
-    install_requires=["ete3 >= 3.1.3",
-                      "biopython >= 1.84"],
+    install_requires=["ete3 == 3.1.3",
+                      "biopython == 1.84",
+                      "six == 1.16.0"],
     extras_require={  # Optional
         "dev": ["pre-commit", "pipenv"],
         "test": ["pytest", "pytest-cov"],
