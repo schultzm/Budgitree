@@ -133,4 +133,4 @@ are imaginative, that kind of sounds like `budgit`.  `tree` is because it operat
 phylogenetic trees.  The `smuggle` feature of `budgitree` has to do with an Australian
 joke involving budgie and swimwear.
 
-![budgitree](https://image.emojipng.com/733/8792733.jpg)
+🌲
