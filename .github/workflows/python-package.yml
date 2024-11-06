@@ -22,7 +22,7 @@ jobs:
     - name: Install Budgitree
       run: pip3 install git+https://github.com/schultzm/Budgitree.git
     - name: Run Budgitree test
-      run: python3 ~/.local/bin/budgitree test
+      run: budgitree test
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
