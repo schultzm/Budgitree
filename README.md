@@ -129,10 +129,9 @@ budgitree version
 
 ## Etymology
 
-The budgerigar, or "budgie", is an Australian bird (_Melopsittacus undulatus_), keeping 
-with an Australian theme.  The software sets di*gits* on branches – if you
-are imaginative, that kind of sounds like `budgit`.  `tree` is because it operates on
-phylogenetic trees.  The `smuggle` feature of `budgitree` has to do with an Australian
-joke involving budgie and swimwear.
+The budgerigar, or "**budgi**e", is an Australian bird (_Melopsittacus undulatus_), keeping 
+with an Australian theme.  The software sets di**git**s on branches on
+phylogenetic **tree**s.  The `smuggle` feature of `budgitree` has to do with an Australian
+joke involving budgies and swimwear...
 
 🌲
