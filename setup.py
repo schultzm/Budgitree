@@ -40,7 +40,7 @@ setup(
     packages=find_packages(exclude=["contrib", "docs", "tests"]),  # Required
     python_requires=">=3.9",
     install_requires=["ete3 == 3.1.3",
-                      "biopython == 1.84",
+                      "biopython == 1.87",
                       "six == 1.16.0",
                       "setuptools == 78.1.1"],
     extras_require={  # Optional
